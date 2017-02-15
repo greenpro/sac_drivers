@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(andreas_arm_drivers)
+project(sac_drivers)
 
 add_compile_options(-std=c++11)
 
@@ -115,7 +115,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES andreas_arm_drivers
+#  LIBRARIES sac_drivers
 #  CATKIN_DEPENDS roscpp rospy
 #  DEPENDS system_lib
 )
@@ -132,24 +132,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(andreas_arm_drivers
-#   src/${PROJECT_NAME}/andreas_arm_drivers.cpp
+# add_library(sac_drivers
+#   src/${PROJECT_NAME}/sac_drivers.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(andreas_arm_drivers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(sac_drivers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(andreas_arm_drivers_node src/andreas_arm_drivers_node.cpp)
+# add_executable(sac_drivers_node src/sac_drivers_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(andreas_arm_drivers_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(sac_drivers_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(andreas_arm_drivers_node
+# target_link_libraries(sac_drivers_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -168,7 +168,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS andreas_arm_drivers andreas_arm_drivers_node
+# install(TARGETS sac_drivers sac_drivers_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -193,7 +193,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_andreas_arm_drivers.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_sac_drivers.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -205,7 +205,6 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 add_executable(alpha_driver         src/alpha_driver.cpp)
 target_link_libraries(alpha_driver  ${catkin_LIBRARIES})
-#add_dependencies(alpha_driver       andreas_arm_drivers_gencpp)
 
 add_executable(beta_driver         src/beta_driver.cpp)
 target_link_libraries(beta_driver  ${catkin_LIBRARIES})
