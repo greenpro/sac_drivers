@@ -266,7 +266,7 @@ int main(int argc, char **argv)
 #endif
 
     ros::NodeHandle nh;
-    modePub = nh.advertise<std_msgs::Float64>("mode", 1000);
+    modePub = nh.advertise<std_msgs::Float64>("controllerNode", 1000);
 
     // top level
     menuItem *about = new menuItem("About", nullptr);

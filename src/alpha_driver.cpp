@@ -32,14 +32,13 @@ void callback(const std_msgs::Float64MultiArray::ConstPtr& msg)
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "alphaMotor");
+    ros::init(argc, argv, "alpha_motor");
 
     // Incoming messages
     ros::NodeHandle nh;
     ros::Subscriber sub = nh.subscribe("alphaMotor", 1000, callback);
 
     // Outgoing messages
-    //feedback  = nh.advertise<std_msgs::Float64>("deltaFeedback", 1000);
     simulator = nh.advertise<std_msgs::Float64>("andreas_arm/delta_position_controller/command",   1000);
     microcontroller       = nh.advertise<std_msgs::Float64>("microcontroller",           1000);
 
