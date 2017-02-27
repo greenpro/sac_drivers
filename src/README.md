@@ -25,7 +25,11 @@ epsilon_driver.cpp
 
 zeta_driver.cpp
 * The zeta driver will control the sixth joint of the andreas arm.
-* This node will be compiled to zeta_driver for the andreas arm and.
+* This node will be compiled to zeta_driver for the andreas arm.
+
+hand_driver.cpp
+* The hand driver will control the motion of the gripper in both the andreas and scorbot arms.
+* This node will be compiled to hand_driver.
 
 display_driver.cpp
 * The display driver will control the menu for the system and the writing to the display.
