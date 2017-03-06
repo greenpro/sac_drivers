@@ -220,3 +220,18 @@ target_link_libraries(epsilon_driver  ${catkin_LIBRARIES})
 
 add_executable(zeta_driver         src/zeta_driver.cpp)
 target_link_libraries(zeta_driver  ${catkin_LIBRARIES})
+
+add_executable(base_driver         src/alpha_driver.cpp)
+target_link_libraries(base_driver  ${catkin_LIBRARIES})
+
+add_executable(shoulder_driver         src/beta_driver.cpp)
+target_link_libraries(shoulder_driver  ${catkin_LIBRARIES})
+
+add_executable(elbow_driver         src/gamma_driver.cpp)
+target_link_libraries(elbow_driver  ${catkin_LIBRARIES})
+
+add_executable(wrist_pitch_driver         src/delta_driver.cpp)
+target_link_libraries(wrist_pitch_driver  ${catkin_LIBRARIES})
+
+add_executable(wrist_roll_driver         src/epsilon_driver.cpp)
+target_link_libraries(wrist_roll_driver  ${catkin_LIBRARIES})
