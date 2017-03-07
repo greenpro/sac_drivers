@@ -1,5 +1,6 @@
+#include <linux/serial.h>
+
 #include <ros/ros.h>
-#include <std_msgs/String.h>
 
 void callback(const std_msgs::String::ConstPtr& msg)
 {

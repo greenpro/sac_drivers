@@ -16,7 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  #  message_generation
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -60,16 +60,14 @@ find_package(catkin REQUIRED COMPONENTS
   #)
 
 ## Generate services in the 'srv' folder
-#add_service_files(
-#  FILES
-  #  motor_driver.srv
-  #  alpha_driver.srv
-  #  beta_driver.srv
-  #  gamma_driver.srv
-  #  delta_driver.srv
-  #  epsilon_driver.srv
-  #  zeta_driver.srv
-  #)
+add_service_files(
+  FILES
+  encoder.srv
+  motorPosition.srv
+  motorsComplete.srv
+  motorsOffset.srv
+  motorSpeed.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -79,10 +77,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-#generate_messages(
-#  DEPENDENCIES
-#  std_msgs  # Or other packages containing msgs
-#)
+generate_messages(
+  DEPENDENCIES
+  std_msgs  # Or other packages containing msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -235,3 +233,6 @@ target_link_libraries(wrist_pitch_driver  ${catkin_LIBRARIES})
 
 add_executable(wrist_roll_driver         src/epsilon_driver.cpp)
 target_link_libraries(wrist_roll_driver  ${catkin_LIBRARIES})
+
+add_executable(usb_driver         src/usb_driver.cpp)
+target_link_libraries(usb_driver  ${catkin_LIBRARIES})

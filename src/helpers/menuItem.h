@@ -1,3 +1,5 @@
+#ifndef MENUITEM_H
+#define MENUITEM_H
 
 struct menuItem
 {
@@ -20,3 +22,5 @@ struct menuItem
     std_msgs::Int32 msg;
     void (*func) (void) func;
 }
+
+#endif // MENUITEM_H
