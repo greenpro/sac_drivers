@@ -35,9 +35,9 @@ display_driver.cpp
 * The display driver will control the menu for the system and the writing to the display.
 * The code for this comes from the Wiring Pi library.
 
-serial_driver.cpp
-* The serial driver will communicate to the serial interface of the scorbot.
-* This driver is necessary to allow all of the nodes to communicate with the robot without conflicting. If they do not go through this node the writes to the usb file will conflict and possibly cause the nodes to crash.
+usb_driver.cpp
+* The serial driver will communicate to the serial USB interface of the scorbot.
+* This driver is necessary to allow all of the nodes to communicate with the robot without conflicting. If they do not go through this node the writes to the usb file will conflict and possibly cause the nodes to crash. This node does not follow the ROS convention of doing the smallest necessary because of this convention.
 
 ## Folders
 helpers/
