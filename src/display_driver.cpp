@@ -1,10 +1,9 @@
 #include <ros/ros.h>
-#include <std_msgs/String>
-#include <std_msgs/Int32>
 #include <linux/reboot.h>
-#include <helpers/config.h>
-#include <helpers/display_driver.h>
-#include <helpers/menuItem.h>
+
+#include "helpers/config.h"
+#include "helpers/display.h"
+#include "helpers/menuItem.h"
 
 #ifdef RASPBERRY_PI
 #include <wiringPi.h>
@@ -23,6 +22,8 @@ display disp;
 ros::Publisher modePub;
 
 /*
+ * menu structure
+ *
  * about
  *  status
  *  ip address
@@ -84,6 +85,8 @@ void statusFunc()
 #endif
 
     // Drivers
+    // TODO :: add the rest of the drivers when the project is complete.
+#ifdef ANDREAS_ARM
     if (std::string::npos != out.find("alpha_driver"))
     {
         disp.displayText("Alpha Driver\nnot running");
@@ -122,6 +125,51 @@ void statusFunc()
     if (std::string::npos != out.find("zeta_driver"))
     {
         disp.displayText("Zeta Driver\nnot running");
+        delay(2);
+        allRunning = false;
+    }
+#endif
+
+#ifdef SCORBOT
+    if (std::string::npos != out.find("base_driver")
+    {
+        disp.displayText("Base Driver\nnot running");
+        delay(2);
+        allRunning = false;
+    }
+
+    if (std::string::npos != out.find("shoulder_driver")
+    {
+        disp.displayText("Shoulder Driver\nnot running");
+        delay(2);
+        allRunning = false;
+    }
+
+    if (std::string::npos != out.find("elbow_driver")
+    {
+        disp.displayText("Elbow Driver\nnot running");
+        delay(2);
+        allRunning = false;
+    }
+
+    if (std::string::npos != out.find("wrist_pitch_driver")
+    {
+        disp.displayText("Wrist Pitch Driver\nnot running");
+        delay(2);
+        allRunning = false;
+    }
+
+    if (std::string::npos != out.find("wrist_roll_driver")
+    {
+        disp.displayText("Wrist Roll Driver\nnot running");
+        delay(2);
+        allRunning = false;
+    }
+#endif
+
+    if (std::string::npos != out.find("hand_driver")
+    {
+        disp.displayText("Wrist Roll Driver\nnot running");
         delay(2);
         allRunning = false;
     }
@@ -221,7 +269,7 @@ void ipAddressFunc()
     }
 
     // Display to the screen
-    line = "Eth: " + ethline + "\nwlan: " + wlanLine
+    line = "Eth: " + (ethIp ? ethIp : "No IP") + "\nwlan: " + (wlanIp ? wlanIp : "No IP")
     disp.displayText(ethLine, 30);
 }
 

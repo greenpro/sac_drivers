@@ -201,38 +201,42 @@ include_directories(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(alpha_driver         src/alpha_driver.cpp)
-target_link_libraries(alpha_driver  ${catkin_LIBRARIES})
+add_executable(alpha_driver              src/alpha_driver.cpp)
+target_link_libraries(alpha_driver       ${catkin_LIBRARIES})
 
-add_executable(beta_driver         src/beta_driver.cpp)
-target_link_libraries(beta_driver  ${catkin_LIBRARIES})
+add_executable(beta_driver               src/beta_driver.cpp)
+target_link_libraries(beta_driver        ${catkin_LIBRARIES})
 
-add_executable(gamma_driver         src/gamma_driver.cpp)
-target_link_libraries(gamma_driver  ${catkin_LIBRARIES})
+add_executable(gamma_driver              src/gamma_driver.cpp)
+target_link_libraries(gamma_driver       ${catkin_LIBRARIES})
 
-add_executable(delta_driver         src/delta_driver.cpp)
-target_link_libraries(delta_driver  ${catkin_LIBRARIES})
+add_executable(delta_driver              src/delta_driver.cpp)
+target_link_libraries(delta_driver       ${catkin_LIBRARIES})
 
-add_executable(epsilon_driver         src/epsilon_driver.cpp)
-target_link_libraries(epsilon_driver  ${catkin_LIBRARIES})
+add_executable(epsilon_driver            src/epsilon_driver.cpp)
+target_link_libraries(epsilon_driver     ${catkin_LIBRARIES})
 
-add_executable(zeta_driver         src/zeta_driver.cpp)
-target_link_libraries(zeta_driver  ${catkin_LIBRARIES})
+add_executable(zeta_driver               src/zeta_driver.cpp)
+target_link_libraries(zeta_driver        ${catkin_LIBRARIES})
 
-add_executable(base_driver         src/alpha_driver.cpp)
-target_link_libraries(base_driver  ${catkin_LIBRARIES})
+add_executable(base_driver               src/alpha_driver.cpp)
+target_link_libraries(base_driver        ${catkin_LIBRARIES})
 
-add_executable(shoulder_driver         src/beta_driver.cpp)
-target_link_libraries(shoulder_driver  ${catkin_LIBRARIES})
+add_executable(shoulder_driver           src/beta_driver.cpp)
+target_link_libraries(shoulder_driver    ${catkin_LIBRARIES})
 
-add_executable(elbow_driver         src/gamma_driver.cpp)
-target_link_libraries(elbow_driver  ${catkin_LIBRARIES})
+add_executable(elbow_driver              src/gamma_driver.cpp)
+target_link_libraries(elbow_driver       ${catkin_LIBRARIES})
 
-add_executable(wrist_pitch_driver         src/delta_driver.cpp)
-target_link_libraries(wrist_pitch_driver  ${catkin_LIBRARIES})
+add_executable(wrist_pitch_driver        src/delta_driver.cpp)
+target_link_libraries(wrist_pitch_driver ${catkin_LIBRARIES})
 
 add_executable(wrist_roll_driver         src/epsilon_driver.cpp)
 target_link_libraries(wrist_roll_driver  ${catkin_LIBRARIES})
 
-add_executable(usb_driver         src/usb_driver.cpp)
-target_link_libraries(usb_driver  ${catkin_LIBRARIES})
+add_executable(usb_driver                src/usb_driver.cpp)
+target_link_libraries(usb_driver         ${catkin_LIBRARIES})
+
+# TODO :: Add this when the wiringpi library has been completed
+#add_executable(display_driver            src/display_driver.cpp)
+#target_link_libraries(display_driver     ${catkin_LIBRARIES})
