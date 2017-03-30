@@ -1,4 +1,0 @@
-uint32 motor
-uint32 angle
----
-bool result

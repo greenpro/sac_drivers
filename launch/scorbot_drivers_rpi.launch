@@ -1,0 +1,33 @@
+<launch>
+    <!--node name="base_driver" pkg="sac_drivers" type="base_driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="shoulder_driver" pkg="sac_drivers" type="shoulder_driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="elbow_driver" pkg="sac_drivers" type="elbow_driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="wrist_pitch_driver" pkg="sac_drivers" type="wrist_pitch_driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="wrist_roll_driver" pkg="sac_drivers" type="wrist_roll__driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="hand_driver" pkg="sac_drivers" type="hand_driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="usb_driver" pkg="sac_drivers" type="usb_driver" 
+        respawn="false" output="screen">
+    </node>
+
+    <node name="display_driver" pkg="sac_drivers" type="display_driver" 
+        respawn="false" output="screen">
+    </node-->
+</launch>
