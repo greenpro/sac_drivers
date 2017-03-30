@@ -1,6 +1,5 @@
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
-#include <std_msgs/Float64MultiArray.h>
 #include <sac_msgs/MotorPos.h>
 
 #define PI (3.141592)
