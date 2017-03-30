@@ -1,9 +1,9 @@
 <launch>
-    <!--node name="base_driver" pkg="sac_drivers" type="base_driver" 
+    <node name="base_driver" pkg="sac_drivers" type="base_driver" 
         respawn="false" output="screen">
     </node>
 
-    <node name="shoulder_driver" pkg="sac_drivers" type="shoulder_driver" 
+    <!--node name="shoulder_driver" pkg="sac_drivers" type="shoulder_driver" 
         respawn="false" output="screen">
     </node>
 

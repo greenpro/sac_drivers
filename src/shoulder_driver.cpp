@@ -3,8 +3,8 @@
 #include <std_msgs/Float64MultiArray.h>
 
 #define PI (3.141592)
-#define UPPER_LIMIT (PI)
-#define LOWER_LIMIT (-PI)
+#define UPPER_LIMIT (2.2689)
+#define LOWER_LIMIT (-0.6109)
 
 //ros::Publisher feedback;
 ros::Publisher simulator;

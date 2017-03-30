@@ -3,8 +3,6 @@
 #include <std_msgs/Float64MultiArray.h>
 
 #define PI (3.141592)
-#define UPPER_LIMIT (PI)
-#define LOWER_LIMIT (-PI)
 
 //ros::Publisher feedback;
 ros::Publisher simulator;
@@ -14,17 +12,6 @@ int currentTickCount = 0;
 
 void callback(const std_msgs::Float64MultiArray::ConstPtr& msg)
 {
-    if (msg->data[0] > UPPER_LIMIT || msg->data[0] < LOWER_LIMIT)
-    {
-        //std_msgs::String msgfb;
-        //msgfb.data = "Value is out of range";
-        //feedback.publish(msgfb);
-
-        ROS_INFO("The value %f sent to the delta motor is out of the valid range of %f to %f.", msg->data, UPPER_LIMIT, LOWER_LIMIT);
-
-        return;
-    }
-
     std_msgs::Float64 simmsg;
     simmsg.data = msg->data[0];
 

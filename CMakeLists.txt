@@ -17,6 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  sac_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -59,28 +60,12 @@ find_package(catkin REQUIRED COMPONENTS
   #alpha_driver.msg
   #)
 
-## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  encoder.srv
-  motorPosition.srv
-  motorsComplete.srv
-  motorsOffset.srv
-  motorSpeed.srv
-)
-
 ## Generate actions in the 'action' folder
 # add_action_files(
 #   FILES
 #   Action1.action
 #   Action2.action
 # )
-
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs  # Or other packages containing msgs
-)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -201,37 +186,37 @@ include_directories(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(alpha_driver              src/alpha_driver.cpp)
-target_link_libraries(alpha_driver       ${catkin_LIBRARIES})
+#add_executable(alpha_driver              src/alpha_driver.cpp)
+#target_link_libraries(alpha_driver       ${catkin_LIBRARIES})
+#
+#add_executable(beta_driver               src/beta_driver.cpp)
+#target_link_libraries(beta_driver        ${catkin_LIBRARIES})
+#
+#add_executable(gamma_driver              src/gamma_driver.cpp)
+#target_link_libraries(gamma_driver       ${catkin_LIBRARIES})
+#
+#add_executable(delta_driver              src/delta_driver.cpp)
+#target_link_libraries(delta_driver       ${catkin_LIBRARIES})
+#
+#add_executable(epsilon_driver            src/epsilon_driver.cpp)
+#target_link_libraries(epsilon_driver     ${catkin_LIBRARIES})
+#
+#add_executable(zeta_driver               src/zeta_driver.cpp)
+#target_link_libraries(zeta_driver        ${catkin_LIBRARIES})
 
-add_executable(beta_driver               src/beta_driver.cpp)
-target_link_libraries(beta_driver        ${catkin_LIBRARIES})
-
-add_executable(gamma_driver              src/gamma_driver.cpp)
-target_link_libraries(gamma_driver       ${catkin_LIBRARIES})
-
-add_executable(delta_driver              src/delta_driver.cpp)
-target_link_libraries(delta_driver       ${catkin_LIBRARIES})
-
-add_executable(epsilon_driver            src/epsilon_driver.cpp)
-target_link_libraries(epsilon_driver     ${catkin_LIBRARIES})
-
-add_executable(zeta_driver               src/zeta_driver.cpp)
-target_link_libraries(zeta_driver        ${catkin_LIBRARIES})
-
-add_executable(base_driver               src/alpha_driver.cpp)
+add_executable(base_driver               src/base_driver.cpp)
 target_link_libraries(base_driver        ${catkin_LIBRARIES})
 
-add_executable(shoulder_driver           src/beta_driver.cpp)
+add_executable(shoulder_driver           src/shoulder_driver.cpp)
 target_link_libraries(shoulder_driver    ${catkin_LIBRARIES})
 
-add_executable(elbow_driver              src/gamma_driver.cpp)
+add_executable(elbow_driver              src/elbow_driver.cpp)
 target_link_libraries(elbow_driver       ${catkin_LIBRARIES})
 
-add_executable(wrist_pitch_driver        src/delta_driver.cpp)
+add_executable(wrist_pitch_driver        src/wrist_pitch_driver.cpp)
 target_link_libraries(wrist_pitch_driver ${catkin_LIBRARIES})
 
-add_executable(wrist_roll_driver         src/epsilon_driver.cpp)
+add_executable(wrist_roll_driver         src/wrist_roll_driver.cpp)
 target_link_libraries(wrist_roll_driver  ${catkin_LIBRARIES})
 
 add_executable(usb_driver                src/usb_driver.cpp)
