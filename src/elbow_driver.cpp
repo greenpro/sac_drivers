@@ -14,9 +14,11 @@ void callback(const sac_msgs::MotorPos::ConstPtr& msg)
 {
     if (msg->pos > UPPER_LIMIT || msg->pos < LOWER_LIMIT)
     {
-        ROS_INFO("The value %f sent to the delta motor is out of the valid range of %f to %f.", msg->pos, UPPER_LIMIT, LOWER_LIMIT);
+        ROS_INFO("The value %f sent to the elbow motor is out of the valid range of %f to %f.", msg->pos, UPPER_LIMIT, LOWER_LIMIT);
         return;
     }
+
+    ROS_INFO("elbow motor moving to %f", msg->pos);
 
     std_msgs::Float64 simmsg;
     simmsg.data = msg->pos;
@@ -33,7 +35,7 @@ int main(int argc, char **argv)
     ros::Subscriber sub = nh.subscribe("elbowMotor", 1000, callback);
 
     // Outgoing messages
-    simulator = nh.advertise<sac_msgs::MotorPos>("scorbot/elbow_position_controller/command",   1000);
+    simulator = nh.advertise<std_msgs::Float64>("scorbot/elbow_position_controller/command",   1000);
 
     ros::spin();
 

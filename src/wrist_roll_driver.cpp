@@ -10,6 +10,7 @@ int currentTickCount = 0;
 
 void callback(const sac_msgs::MotorPos::ConstPtr& msg)
 {
+    ROS_INFO("wrist roll motor moving to %f", msg->pos);
     std_msgs::Float64 simmsg;
     simmsg.data = msg->pos;
 
@@ -25,7 +26,7 @@ int main(int argc, char **argv)
     ros::Subscriber sub = nh.subscribe("wristRollMotor", 1000, callback);
 
     // Outgoing messages
-    simulator = nh.advertise<sac_msgs::MotorPos>("scorbot/wrist_roll_position_controller/command",   1000);
+    simulator = nh.advertise<std_msgs::Float64>("scorbot/wrist_roll_position_controller/command",   1000);
 
     ros::spin();
 

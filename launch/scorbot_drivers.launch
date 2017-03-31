@@ -15,7 +15,7 @@
         respawn="false" output="screen">
     </node>
 
-    <node name="wrist_roll_driver" pkg="sac_drivers" type="wrist_roll__driver" 
+    <node name="wrist_roll_driver" pkg="sac_drivers" type="wrist_roll_driver" 
         respawn="false" output="screen">
     </node>
 
