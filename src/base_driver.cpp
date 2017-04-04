@@ -18,6 +18,8 @@ void callback(const sac_msgs::MotorPos::ConstPtr& msg)
         return;
     }
 
+    currentTickCount = 1;
+
     ROS_INFO("base motor moving to %f", msg->pos);
 
     std_msgs::Float64 simmsg;
