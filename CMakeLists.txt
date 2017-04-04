@@ -222,6 +222,8 @@ target_link_libraries(wrist_roll_driver  ${catkin_LIBRARIES})
 add_executable(usb_driver                src/usb_driver.cpp)
 target_link_libraries(usb_driver         ${catkin_LIBRARIES})
 
+add_executable(hand_driver                src/hand_driver.cpp)
+target_link_libraries(hand_driver         ${catkin_LIBRARIES})
 # TODO :: Add this when the wiringpi library has been completed
 #add_executable(display_driver            src/display_driver.cpp)
 #target_link_libraries(display_driver     ${catkin_LIBRARIES})
