@@ -26,13 +26,12 @@ void callback(const sac_msgs::HandPos::ConstPtr& msg)
     float h = 0.070;
     float w0 = wt - w / 2;
     float H = asin(w0 / h);
-    float H0 = 0 - H;
 
     std_msgs::Float64 g0;
     std_msgs::Float64 g1;
 
     g0.data = H;
-    g1.data = H0;
+    g1.data = H;
 
     gripper0.publish(g0);
     gripper1.publish(g1);
@@ -47,8 +46,8 @@ int main(int argc, char **argv)
     ros::Subscriber sub = nh.subscribe("handDriver", 1000, callback);
 
     // Outgoing messages
-    gripper0 = nh.advertise<std_msgs::Float64>("scorbot/pad1_position_controller/command",   1000);
-    gripper1 = nh.advertise<std_msgs::Float64>("scorbot/pad2_position_controller/command",   1000);
+    gripper0 = nh.advertise<std_msgs::Float64>("scorbot/rpad_position_controller/command",   1000);
+    gripper1 = nh.advertise<std_msgs::Float64>("scorbot/lpad_position_controller/command",   1000);
 
     ros::spin();
 
