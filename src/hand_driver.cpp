@@ -13,6 +13,7 @@ int currentTickCount = 0;
 
 void callback(const sac_msgs::HandPos::ConstPtr& msg)
 {
+    ROS_INFO("                   HIT HIT HIT HIT HIT HIT");
     if (msg->width > UPPER_LIMIT || msg->width < LOWER_LIMIT)
     {
         ROS_INFO("The value %f sent to the hand motor is out of the valid range of %f to %f.", msg->width, UPPER_LIMIT, LOWER_LIMIT);
@@ -22,10 +23,12 @@ void callback(const sac_msgs::HandPos::ConstPtr& msg)
     ROS_INFO("Grippers moving to %f", msg->width);
 
     float w = msg->width;
-    float wt = 0.025;
-    float h = 0.070;
-    float w0 = wt - w / 2;
-    float H = asin(w0 / h);
+    float w_max = 0.065;
+    float Hc = 1.52435;
+    float g = 0.070;
+
+    float H0 = acos((w_max - w) / (2 * g));
+    float H = H0 - Hc;
 
     std_msgs::Float64 g0;
     std_msgs::Float64 g1;
@@ -46,8 +49,8 @@ int main(int argc, char **argv)
     ros::Subscriber sub = nh.subscribe("handDriver", 1000, callback);
 
     // Outgoing messages
-    gripper0 = nh.advertise<std_msgs::Float64>("scorbot/rpad_position_controller/command",   1000);
-    gripper1 = nh.advertise<std_msgs::Float64>("scorbot/lpad_position_controller/command",   1000);
+    gripper0 = nh.advertise<std_msgs::Float64>("scorbot/pad1_position_controller/command",   1000);
+    gripper1 = nh.advertise<std_msgs::Float64>("scorbot/pad2_position_controller/command",   1000);
 
     ros::spin();
 
