@@ -13,7 +13,6 @@ int currentTickCount = 0;
 
 void callback(const sac_msgs::HandPos::ConstPtr& msg)
 {
-    ROS_INFO("                   HIT HIT HIT HIT HIT HIT");
     if (msg->width > UPPER_LIMIT || msg->width < LOWER_LIMIT)
     {
         ROS_INFO("The value %f sent to the hand motor is out of the valid range of %f to %f.", msg->width, UPPER_LIMIT, LOWER_LIMIT);
@@ -24,14 +23,15 @@ void callback(const sac_msgs::HandPos::ConstPtr& msg)
 
     float w = msg->width;
     float w_max = 0.065;
-    float Hc = 1.52435;
+    float Hc = 1.087968364;
     float g = 0.070;
 
-    float H0 = acos((w_max - w) / (2 * g));
-    float H = H0 - Hc;
+    float H = acos((w_max - w) / (2 * g)) - Hc;
 
     std_msgs::Float64 g0;
     std_msgs::Float64 g1;
+
+    ROS_INFO("Grippers moving to angle %f", H);
 
     g0.data = H;
     g1.data = H;
