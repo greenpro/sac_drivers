@@ -39,7 +39,7 @@ This folder contains the source files for the nodes.
 ### hand_driver.cpp
 * The hand driver will control the motion of the gripper in both the andreas and scorbot arms.
 
-### display_driver.cpp
+### display_driver.cpp (not in use)
 * The display driver will control the menu for the system and the writing to the display.
 * The code for this is modified from the Wiring Pi library.
 * Much of the code for the display driver comes from http://wiringpi.com/examples/adafruit-rgb-lcd-plate-and-wiringpi/ and the Wiring Pi library.
