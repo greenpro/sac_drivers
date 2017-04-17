@@ -1,29 +1,63 @@
 #include <ros/ros.h>
 #include <std_msgs/Float64.h>
 #include <sac_msgs/MotorPos.h>
+#include <sac_msgs/MotorPosition.h>
+#include <sac_msgs/MotorSpeed.h>
 
-#define PI (3.141592)
-#define UPPER_LIMIT (2.2689)
-#define LOWER_LIMIT (-0.6109)
+// This is done through a namespace instead of #defines to keep with newer c++ practices.
+namespace shoulderMotor 
+{
+    // constants
+    const float pi = 3.14159265;
+    const float upperLimit = 2.7053;
+    const float lowerLimit = -0.6109;
+    const int motorNumber = 1;
 
-ros::Publisher simulator;
+    // globals
+    int currentTickCount = 0;
 
-int currentTickCount = 0;
+    // publishers
+    ros::Publisher simulator;
+    ros::ServiceClient position;
+    ros::ServiceClient speed;
+}
 
 void callback(const sac_msgs::MotorPos::ConstPtr& msg)
 {
-    if (msg->pos > UPPER_LIMIT || msg->pos < LOWER_LIMIT)
+    if (msg->pos > shoulderMotor::upperLimit || msg->pos < shoulderMotor::lowerLimit)
     {
-        ROS_INFO("The value %f sent to the shoulder motor is out of the valid range of %f to %f.", msg->pos, UPPER_LIMIT, LOWER_LIMIT);
+        ROS_INFO("The value %f sent to the shoulder motor is out of the valid range of %f to %f.", msg->pos, shoulderMotor::lowerLimit, shoulderMotor::upperLimit);
         return;
     }
 
     ROS_INFO("shoulder motor moving to %f", msg->pos);
 
+    // simulator
     std_msgs::Float64 simmsg;
     simmsg.data = msg->pos;
 
-    simulator.publish(simmsg);
+    shoulderMotor::simulator.publish(simmsg);
+    
+    // hardware position
+    sac_msgs::MotorPosition posmsg;
+    posmsg.request.motor = shoulderMotor::motorNumber;
+    int nextTickCount = (int)(msg->pos * 4000 / shoulderMotor::pi);
+    posmsg.request.ticks = nextTickCount - shoulderMotor::currentTickCount;
+
+    if (shoulderMotor::position.call(posmsg))
+        ROS_INFO("Base motor position written.");
+    else
+        ROS_INFO("Base motor position failed to write.");
+
+    // hardware speed
+    sac_msgs::MotorSpeed spdmsg;
+    spdmsg.request.motor = shoulderMotor::motorNumber;
+    spdmsg.request.speed = msg->speed;
+
+    if (shoulderMotor::speed.call(spdmsg))
+        ROS_INFO("Base motor speed written.");
+    else
+        ROS_INFO("Base motor speed failed to write.");
 }
 
 int main(int argc, char **argv)
@@ -34,8 +68,9 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
     ros::Subscriber sub = nh.subscribe("shoulderMotor", 1000, callback);
 
-    // Outgoing messages
-    simulator = nh.advertise<std_msgs::Float64>("scorbot/shoulder_position_controller/command",   1000);
+    shoulderMotor::simulator = nh.advertise<std_msgs::Float64>("scorbot/shoulder_position_controller/command",   1000);
+    shoulderMotor::position = nh.serviceClient<sac_msgs::MotorPosition>("motorPosition");
+    shoulderMotor::speed = nh.serviceClient<sac_msgs::MotorSpeed>("motorSpeed");
 
     ros::spin();
 

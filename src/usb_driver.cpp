@@ -67,11 +67,9 @@ bool motorPosition(sac_msgs::MotorPosition::Request  &req,
 
     ROS_INFO_NAMED(NODE_NAME, "File open %d", fd);
 
-    char sign = '+';
-    if (req.angle < 0)
-        sign = '-';
+    char sign = req.ticks > -1 ? '+' : '-';
 
-    sprintf(data, "%d M %c %04d \n", req.motor, sign, abs(req.angle));
+    sprintf(data, "%d M %c %04d \n", req.motor, sign, abs(req.ticks));
 
     wr = write(fd, data, 11);
     // a M +- bcde \n

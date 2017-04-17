@@ -22,4 +22,8 @@
     <node name="hand_driver" pkg="sac_drivers" type="hand_driver" 
         respawn="false" output="screen">
     </node>
+
+    <node name="usb_driver" pkg="sac_drivers" type="usb_driver" 
+        respawn="false" output="screen">
+    </node>
 </launch>
