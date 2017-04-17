@@ -7,17 +7,17 @@
 #include <math.h>
 
 #include "helpers/config.h"
-#include "sac_msgs/motorPosition.h"
-#include "sac_msgs/motorSpeed.h"
-#include "sac_msgs/motorsOffset.h"
-#include "sac_msgs/motorsComplete.h"
-#include "sac_msgs/encoder.h"
+#include "sac_msgs/MotorPosition.h"
+#include "sac_msgs/MotorSpeed.h"
+#include "sac_msgs/MotorsOffset.h"
+#include "sac_msgs/MotorsComplete.h"
+#include "sac_msgs/Encoder.h"
 
 #define SERIAL_FILE ("/dev/ttyusb0")
 #define NODE_NAME ("usb_driver")
 
-bool motorSpeed(sac_msgs::motorSpeed::Request  &req,
-                sac_msgs::motorSpeed::Response &res)
+bool motorSpeed(sac_msgs::MotorSpeed::Request  &req,
+                sac_msgs::MotorSpeed::Response &res)
 {
     int fd;
     char *data;
@@ -47,8 +47,8 @@ bool motorSpeed(sac_msgs::motorSpeed::Request  &req,
     return 0;
 }
 
-bool motorPosition(sac_msgs::motorPosition::Request  &req,
-                   sac_msgs::motorPosition::Response &res)
+bool motorPosition(sac_msgs::MotorPosition::Request  &req,
+                   sac_msgs::MotorPosition::Response &res)
 {
     int fd;
     char *data;
@@ -81,8 +81,8 @@ bool motorPosition(sac_msgs::motorPosition::Request  &req,
     return 0;
 }
 
-bool motorsOffset(sac_msgs::motorsOffset::Request  &req,
-                  sac_msgs::motorsOffset::Response &res)
+bool motorsOffset(sac_msgs::MotorsOffset::Request  &req,
+                  sac_msgs::MotorsOffset::Response &res)
 {
     int fd;
     char *data;
@@ -107,8 +107,8 @@ bool motorsOffset(sac_msgs::motorsOffset::Request  &req,
     return 0;
 }
 
-bool motorsComplete(sac_msgs::motorsComplete::Request  &req,
-                    sac_msgs::motorsComplete::Response &res)
+bool motorsComplete(sac_msgs::MotorsComplete::Request  &req,
+                    sac_msgs::MotorsComplete::Response &res)
 {
     int fd;
     char *data;
@@ -132,8 +132,8 @@ bool motorsComplete(sac_msgs::motorsComplete::Request  &req,
     return 0;
 }
 
-bool encoder(sac_msgs::encoder::Request  &req,
-             sac_msgs::encoder::Response &res)
+bool encoder(sac_msgs::Encoder::Request  &req,
+             sac_msgs::Encoder::Response &res)
 {
     int fd;
     char *data;
