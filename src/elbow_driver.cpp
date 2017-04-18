@@ -41,7 +41,7 @@ void callback(const sac_msgs::MotorPos::ConstPtr& msg)
     // hardware position
     sac_msgs::MotorPosition posmsg;
     posmsg.request.motor = elbowMotor::motorNumber;
-    int nextTickCount = (int)(msg->pos * 4000 / elbowMotor::pi);
+    int nextTickCount = (int)(msg->pos * 8000 / elbowMotor::pi);
     posmsg.request.ticks = nextTickCount - elbowMotor::currentTickCount;
 
     if (elbowMotor::position.call(posmsg))

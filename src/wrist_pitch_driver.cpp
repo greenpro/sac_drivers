@@ -41,7 +41,7 @@ void callback(const sac_msgs::MotorPos::ConstPtr& msg)
     // hardware position
     sac_msgs::MotorPosition posmsg;
     posmsg.request.motor = pitchMotor::motorNumber;
-    int nextTickCount = (int)(msg->pos * 4000 / pitchMotor::pi);
+    int nextTickCount = (int)(msg->pos * 8000 / pitchMotor::pi);
     posmsg.request.ticks = nextTickCount - pitchMotor::currentTickCount;
 
     if (pitchMotor::position.call(posmsg))
