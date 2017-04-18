@@ -3,6 +3,7 @@
 #include <sac_msgs/MotorPos.h>
 #include <sac_msgs/MotorPosition.h>
 #include <sac_msgs/MotorSpeed.h>
+#include <sac_msgs/Encoder.h>
 
 // This is done through a namespace instead of #defines to keep with newer c++ practices.
 namespace shoulderMotor 
@@ -41,7 +42,7 @@ void callback(const sac_msgs::MotorPos::ConstPtr& msg)
     // hardware position
     sac_msgs::MotorPosition posmsg;
     posmsg.request.motor = shoulderMotor::motorNumber;
-    int nextTickCount = (int)(msg->pos * 4000 / shoulderMotor::pi);
+    int nextTickCount = (int)(msg->pos * 8000 / shoulderMotor::pi);
     posmsg.request.ticks = nextTickCount - shoulderMotor::currentTickCount;
 
     if (shoulderMotor::position.call(posmsg))
@@ -71,6 +72,37 @@ int main(int argc, char **argv)
     shoulderMotor::simulator = nh.advertise<std_msgs::Float64>("scorbot/shoulder_position_controller/command",   1000);
     shoulderMotor::position = nh.serviceClient<sac_msgs::MotorPosition>("motorPosition");
     shoulderMotor::speed = nh.serviceClient<sac_msgs::MotorSpeed>("motorSpeed");
+
+    ros::ServiceClient encoder = nh.serviceClient<sac_msgs::Encoder>("encoder");
+
+    // Set the speed
+    sac_msgs::MotorSpeed spdmsg;
+    spdmsg.request.motor = shoulderMotor::motorNumber;
+    spdmsg.request.speed = 1;
+
+    shoulderMotor::speed.call(spdmsg);
+
+    // pos message
+    sac_msgs::MotorPosition posmsg;
+    posmsg.request.motor = shoulderMotor::motorNumber;
+    posmsg.request.ticks = -5;
+    shoulderMotor::position.call(posmsg);
+
+    sac_msgs::Encoder encmsg;
+    encmsg.request.motor = shoulderMotor::motorNumber;
+    sleep(1);
+    
+    bool end = false;
+    while (!end)
+    {
+        posmsg.request.ticks = 1;
+        shoulderMotor::position.call(posmsg);
+
+        encoder.call(encmsg);
+        end = encmsg.response.result;
+    }
+    posmsg.request.ticks = -6889;
+    shoulderMotor::position.call(posmsg);
 
     ros::spin();
 
