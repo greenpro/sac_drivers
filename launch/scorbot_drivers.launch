@@ -11,11 +11,11 @@
         respawn="false" output="screen">
     </node>
 
-    <node name="wrist_pitch_driver" pkg="sac_drivers" type="wrist_pitch_driver" 
+    <node name="pitch_driver" pkg="sac_drivers" type="pitch_driver" 
         respawn="false" output="screen">
     </node>
 
-    <node name="wrist_roll_driver" pkg="sac_drivers" type="wrist_roll_driver" 
+    <node name="roll_driver" pkg="sac_drivers" type="roll_driver" 
         respawn="false" output="screen">
     </node>
 

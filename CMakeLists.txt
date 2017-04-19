@@ -203,26 +203,26 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 #add_executable(zeta_driver               src/zeta_driver.cpp)
 #target_link_libraries(zeta_driver        ${catkin_LIBRARIES})
 
-add_executable(base_driver               src/base_driver.cpp)
-target_link_libraries(base_driver        ${catkin_LIBRARIES})
+add_executable(base_driver            src/base_driver.cpp)
+target_link_libraries(base_driver     ${catkin_LIBRARIES})
 
-add_executable(shoulder_driver           src/shoulder_driver.cpp)
-target_link_libraries(shoulder_driver    ${catkin_LIBRARIES})
+add_executable(shoulder_driver        src/shoulder_driver.cpp)
+target_link_libraries(shoulder_driver ${catkin_LIBRARIES})
 
-add_executable(elbow_driver              src/elbow_driver.cpp)
-target_link_libraries(elbow_driver       ${catkin_LIBRARIES})
+add_executable(elbow_driver           src/elbow_driver.cpp)
+target_link_libraries(elbow_driver    ${catkin_LIBRARIES})
 
-add_executable(wrist_pitch_driver        src/wrist_pitch_driver.cpp)
-target_link_libraries(wrist_pitch_driver ${catkin_LIBRARIES})
+add_executable(pitch_driver           src/pitch_driver.cpp)
+target_link_libraries(pitch_driver    ${catkin_LIBRARIES})
 
-add_executable(wrist_roll_driver         src/wrist_roll_driver.cpp)
-target_link_libraries(wrist_roll_driver  ${catkin_LIBRARIES})
+add_executable(roll_driver            src/roll_driver.cpp)
+target_link_libraries(roll_driver     ${catkin_LIBRARIES})
 
-add_executable(usb_driver                src/usb_driver.cpp)
-target_link_libraries(usb_driver         ${catkin_LIBRARIES})
+add_executable(usb_driver             src/usb_driver.cpp)
+target_link_libraries(usb_driver      ${catkin_LIBRARIES})
 
-add_executable(hand_driver                src/hand_driver.cpp)
-target_link_libraries(hand_driver         ${catkin_LIBRARIES})
+add_executable(hand_driver            src/hand_driver.cpp)
+target_link_libraries(hand_driver     ${catkin_LIBRARIES})
 # TODO :: Add this when the wiringpi library has been completed
 #add_executable(display_driver            src/display_driver.cpp)
 #target_link_libraries(display_driver     ${catkin_LIBRARIES})
