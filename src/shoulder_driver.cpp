@@ -18,7 +18,7 @@ namespace shoulder
 
     // globals
     int currentTickCount = 0;
-    bool disconnected = false;
+    bool disconnected = true;
 
     // publishers
     ros::Publisher simulator;

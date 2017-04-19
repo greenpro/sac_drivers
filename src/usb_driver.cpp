@@ -27,6 +27,8 @@ namespace usb
 bool motorSpeed(sac_msgs::MotorSpeed::Request  &req,
                 sac_msgs::MotorSpeed::Response &res)
 {
+    ROS_INFO("----------------------------motor speed");
+    res.info = 5;
     if (usb::disconnected)
     {
         res.disconnected = true;
@@ -42,6 +44,7 @@ bool motorSpeed(sac_msgs::MotorSpeed::Request  &req,
         usb::disconnected = true;
         res.disconnected = true;
         res.result = false;
+    	ROS_INFO("----------------------------unable to open");
         return 0;
     }
 
@@ -58,6 +61,7 @@ bool motorSpeed(sac_msgs::MotorSpeed::Request  &req,
 
     res.disconnected = false;
     res.result = true;
+    res.info = 5;
 
     return 0;
 }
@@ -211,14 +215,6 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, usb::nodeName);
     ros::NodeHandle nh;
-
-    // attempt to open the usb serial device and quit if it does not exist
-    int fd = open(usb::serialFile, O_RDWR | O_NOCTTY | O_NDELAY);
-    if (fd == -1)
-    {
-        ROS_INFO_NAMED(usb::nodeName, "Unable to open %s", usb::serialFile);
-        return 0;
-    }
 
     ros::ServiceServer MotorSpeed            = nh.advertiseService("motorSpeed",     motorSpeed    );
     ros::ServiceServer MotorPosition         = nh.advertiseService("motorPosition",  motorPosition );

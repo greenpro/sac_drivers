@@ -18,7 +18,7 @@ namespace pitch
 
     // globals
     int currentTickCount = 0;
-    bool disconnected = false;
+    bool disconnected = true;
 
     // publishers
     ros::Publisher simulator;
@@ -28,6 +28,7 @@ namespace pitch
 
 void callback(const sac_msgs::MotorPos::ConstPtr& msg)
 {
+    ROS_INFO("--------------------------------------------------------Pitch hit");
     if (msg->pos > pitch::upperLimit || msg->pos < pitch::lowerLimit)
     {
         ROS_INFO("The value %f sent to the wrist pitch motor is out of the valid range of %f to %f.", msg->pos, pitch::lowerLimit, pitch::upperLimit);
@@ -101,11 +102,16 @@ int main(int argc, char **argv)
 
     pitch::speed.call(spdmsg);
 
+    ROS_INFO("-----------------------------------------------------called");
+
     if (spdmsg.response.disconnected)
         pitch::disconnected = true;
 
+    ROS_INFO("-----------------------------------------------------connected %d", spdmsg.response.info);
+
     if (!pitch::disconnected)
     {
+	ROS_INFO("--------------------------------------------------hardware");
         // pos message
         sac_msgs::MotorPosition posmsg;
         posmsg.request.motor = pitch::motorNumber;
