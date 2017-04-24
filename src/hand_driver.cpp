@@ -31,10 +31,10 @@ void callback(const sac_msgs::HandPos::ConstPtr& msg)
     std_msgs::Float64 g0;
     std_msgs::Float64 g1;
 
-    ROS_INFO("Grippers moving to angle %f", H);
+    ROS_INFO("Grippers moving to pos %f", H);
 
-    g0.data = H;
-    g1.data = H;
+    g0.data = msg->width / 2;
+    g1.data = g0.data;
 
     gripper0.publish(g0);
     gripper1.publish(g1);
