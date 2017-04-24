@@ -3,24 +3,6 @@
 This folder contains the source files for the nodes.
 
 ## Files
-### alpha_driver.cpp
-* The alpha driver will control the first joint of the Andreas Arm.
-
-### beta_driver.cpp
-* The beta driver will control the second joint of the Andreas Arm.
-
-### gamma_driver.cpp
-* The gamma driver will control the third joint of the Andreas Arm.
-
-### delta_driver.cpp
-* The delta driver will control the fourth joint of the Andreas Arm.
-
-### epsilon_driver.cpp
-* The epsilon driver will control the fifth joint of the Andreas Arm.
-
-### zeta_driver.cpp
-* The zeta driver will control the sixth joint of the Andreas Arm.
-
 ### base_driver.cpp
 * The base driver will control the first joint of the scorbot.
 
